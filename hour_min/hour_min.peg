@@ -1,0 +1,36 @@
+{
+package hour_min
+
+import (
+	"fmt"
+)
+
+type HourMin struct {
+	hour string
+	min string
+}
+
+}
+
+Time <- hour:Hour ':' min:Minute EOF {
+	hourMin := HourMin{
+		hour: hour.(string),
+		min:  min.(string),
+	}
+	return hourMin, nil
+}
+
+Hour <- ([0-1] Digit / '2' [0-3]  ) {
+    return string(c.text), nil
+}
+
+Minute <- [0-5] Digit {
+    return string(c.text), nil
+}
+
+Digit <- [0-9] {
+    return strconv.Atoi(string(c.text))
+}
+
+EOF ← !.
+

@@ -1,0 +1,31 @@
+{
+package date
+
+import (
+	"fmt"
+)
+
+}
+
+Date <- year:Year '-' month:Month '-' day:Day EOF {
+    return fmt.Sprintf("%v-%v-%v", year, month, day), nil
+}
+
+Year <- Digit Digit Digit Digit {
+    return string(c.text), nil
+}
+
+Month <- ('0' [1-9] / '1' [0-2]) {
+    return string(c.text), nil
+}
+
+Day <- ('0' [1-9] / [1-2] Digit / '3' [0-1]) {
+    return string(c.text), nil
+}
+
+Digit <- [0-9] {
+    return strconv.Atoi(string(c.text))
+}
+
+EOF ← !.
+
