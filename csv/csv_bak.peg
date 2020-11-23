@@ -1,0 +1,74 @@
+{
+package csv
+
+type Doc struct {
+	header []string
+	rows []Row
+}
+
+type Row struct {
+    filed []string
+}
+
+func toIfaceSlice(v interface{}) []interface{} {
+    if v == nil {
+        return nil
+    }
+    return v.([]interface{})
+}
+
+}
+
+CSV <- hdr:Hdr rows:Row+ {
+    header := hdr.([]string)
+    rs := toIfaceSlice(rows)
+    fileRows := make([]Row, 0)
+    for _, r := range rows {
+       curRow := r.([]string)
+       fileRows = append(fileRows, curRow)
+    }
+    doc := Doc{
+        header: header,
+        rows: fileRows,
+    }
+    return doc, nil
+}
+
+Hdr <- row:Row {
+    valsSl := toIfaceSlice(row)
+    sl := make([]string, 0)
+    for _, v := range valsSl {
+        s := v.(string)
+        sl = append(sl, s)
+    }
+    return sl, nil
+}
+
+Row <- vals:(Field (',' Field)*) _ {
+    valsSl := toIfaceSlice(vals)
+    if len(valsSl) == 0 {
+        return []interface{}{}, nil
+    }
+    res := []interface{}{valsSl[0]}
+    restSl := toIfaceSlice(valsSl[1])
+    for _, v := range restSl {
+        vSl := toIfaceSlice(v)
+        res = append(res, vSl[2])
+    }
+    return res, nil
+}
+
+
+Field <- Text / Str {
+    return string(c.text), nil
+}
+
+Text <- [^,\n\r"]+ {
+    return string(c.text), nil
+}
+
+Str <- '"' ('""' / [^"])* '"' {
+    return string(c.text), nil
+}
+
+_ "whitespace" <- [ \n\t\r]*
