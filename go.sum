@@ -1,2 +1,8 @@
 github.com/mna/pigeon v1.0.0 h1:n46IoStjdzjaXuyBH53j9HZ8CVqGWpC7P5/v8dP4qEY=
 github.com/mna/pigeon v1.0.0/go.mod h1:Iym28+kJVnC1hfQvv5MUtI6AiFFzvQjHcvI4RFTG/04=
+github.com/pointlander/compress v1.1.0 h1:5fUcQV2qEHvk0OpILH6eltwluN5VnwiYrkc1wjGUHnU=
+github.com/pointlander/compress v1.1.0/go.mod h1:q5NXNGzqj5uPnVuhGkZfmgHqNUhf15VLi6L9kW0VEc0=
+github.com/pointlander/jetset v1.0.0 h1:bNlaNAX7cDPID9SlcogmXlDWq0KcRJSpKwHXaAM3bGQ=
+github.com/pointlander/jetset v1.0.0/go.mod h1:zY6+WHRPB10uzTajloHtybSicLW1bf6Rz0eSaU9Deng=
+github.com/pointlander/peg v1.0.0 h1:rtCtA6Fu6xJpILX8WJfU+cvrcKmXgTfG/v+bkLP8NYY=
+github.com/pointlander/peg v1.0.0/go.mod h1:WJTMcgeWYr6fZz4CwHnY1oWZCXew8GWCF93FaAxPrh4=

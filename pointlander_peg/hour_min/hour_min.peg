@@ -1,0 +1,10 @@
+package pointlander_peg_hour_min
+
+type HourMin Peg {
+
+}
+
+time <- hour ':' min
+hour <- < digit digit >
+min <- < digit digit >
+digit <- [0-9]
