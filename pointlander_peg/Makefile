@@ -8,3 +8,6 @@ gen_hour_min: hour_min/hour_min.peg
 
 gen_date: date/date.peg
 	peg date/date.peg
+
+gen_csv: csv/csv.peg
+	peg csv/csv.peg

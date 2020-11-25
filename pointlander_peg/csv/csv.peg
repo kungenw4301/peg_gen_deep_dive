@@ -1,0 +1,15 @@
+package pointlander_peg_csv
+
+type CSV Peg {
+
+}
+
+csv <- header row+
+
+header <- row
+
+row <- col (',' col)* eol
+
+col <- < [^,\n\r]+ >
+
+eol <- [ \n\r]*
