@@ -7,6 +7,10 @@ func Test_csv_parser(t *testing.T) {
 a,0,00
 b,1,11
 `
+	s = `"key","value","desc"
+"a","0","00"
+"b","1","11"
+`
 	c := CSV{
 		Pretty: true,
 		Buffer: s,
@@ -21,6 +25,6 @@ b,1,11
 	if doc, err := c.Doc(); err != nil {
 		t.Fatalf("pack doc error, err:%v", err)
 	} else {
-		t.Logf("result csv document:%v", doc)
+		t.Logf("result csv document:%+v", doc)
 	}
 }

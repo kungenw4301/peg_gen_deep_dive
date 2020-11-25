@@ -36,6 +36,7 @@ func (p *CSV) Doc() (CsvDoc, error) {
 		}
 		}
 	}
+	result.rows = rows
 	return result, nil
 }
 
@@ -53,7 +54,7 @@ func (p *CSV) row(n *node32) (Row, error) {
 		return result, errors.New(fmt.Sprintf("not in rule:%v", rulerow))
 	}
 
-	for i := n.up; i != nil; i = n.next {
+	for i := n.up; i != nil; i = i.next {
 		if i.pegRule == rulecol {
 			if c, err := p.col(i); err != nil {
 				return result, err
