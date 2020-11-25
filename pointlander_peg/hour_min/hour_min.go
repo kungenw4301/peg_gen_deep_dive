@@ -15,7 +15,7 @@ func (t *HourMin) pack() (int32, int32) {
 	n := t.AST()
 	hm := HM{}
 	if n.pegRule == ruletime {
-		for node := n; node != nil; node = node.next {
+		for node := n.up; node != nil; node = node.next {
 			switch node.pegRule {
 			case rulehour: {
 				hm.hour = t.walkHour(node)
