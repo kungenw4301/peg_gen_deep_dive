@@ -3,3 +3,13 @@ package pointlander_peg_date
 type Date Peg {
 
 }
+
+date <- year '-' month '-' day
+
+year <- < d d d d >
+
+month <- < d d >
+
+day <- < d d >
+
+d <- [0-9]
